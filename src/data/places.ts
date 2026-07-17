@@ -17,7 +17,7 @@ export interface Nearest {
   label?: string
 }
 
-export interface LonelyPlace {
+export interface LonesomePlace {
   id: string
   name: string
   tagline: string
@@ -44,7 +44,7 @@ export const CATEGORIES: Record<Category, { label: string; color: string }> = {
   pole: { label: 'Poles of inaccessibility', color: '#F2EFE4' },
 }
 
-export const PLACES: LonelyPlace[] = [
+export const PLACES: LonesomePlace[] = [
   // ————————————————————————————————— INHABITED OUTPOSTS
   {
     id: 'edinburgh-of-the-seven-seas',
@@ -926,4 +926,4 @@ export const PLACES: LonelyPlace[] = [
   },
 ]
 
-export const PLACE_INDEX: Map<string, LonelyPlace> = new Map(PLACES.map((p) => [p.id, p]))
+export const PLACE_INDEX: Map<string, LonesomePlace> = new Map(PLACES.map((p) => [p.id, p]))

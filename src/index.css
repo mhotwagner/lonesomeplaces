@@ -1,5 +1,5 @@
 /* ————————————————————————————————————————————————————————————
-   LONELY PLACES — an atlas of the ends of the earth
+   LONESOME PLACES — an atlas of the ends of the earth
 
    Palette: a two-temperature system — beacon amber (a lone light)
    against the cold void of space and chart-paper cream.
@@ -229,7 +229,7 @@ button {
 
 /* ——— the button ——— */
 
-.lonely-button {
+.lonesome-button {
   position: absolute;
   left: 50%;
   bottom: 32px;
@@ -248,7 +248,7 @@ button {
   transition: border-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
 }
 
-.lonely-button:hover {
+.lonesome-button:hover {
   border-color: var(--beacon);
   color: #fff;
   box-shadow: 0 0 24px rgba(255, 180, 84, 0.25);
@@ -337,7 +337,7 @@ button {
 
 /* the hero stat: loneliness, quantified */
 
-.lonely-stat {
+.lonesome-stat {
   margin-top: 26px;
   padding: 18px 20px 16px;
   border: 1px solid rgba(255, 180, 84, 0.35);
@@ -526,13 +526,13 @@ button {
     font-size: 9px;
   }
 
-  .lonely-button {
+  .lonesome-button {
     bottom: 20px;
     width: max-content;
   }
 
   .app.has-selection .legend,
-  .app.has-selection .lonely-button {
+  .app.has-selection .lonesome-button {
     display: none;
   }
 

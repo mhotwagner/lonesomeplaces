@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { CATEGORIES, type LonelyPlace } from '../data/places'
+import { CATEGORIES, type LonesomePlace } from '../data/places'
 import { formatDMS, formatKm } from '../lib/geo'
 import { fetchWikiSummary, type WikiSummary } from '../lib/wiki'
 
 interface DossierProps {
-  place: LonelyPlace
+  place: LonesomePlace
   onClose: () => void
 }
 
@@ -46,7 +46,7 @@ export function Dossier({ place, onClose }: DossierProps) {
       <h2 className="dossier-name">{place.name}</h2>
       <p className="dossier-tagline">{place.tagline}</p>
 
-      <div className="lonely-stat">
+      <div className="lonesome-stat">
         <p className="stat-label">{place.nearest.label ?? 'Nearest inhabited place'}</p>
         <p className="stat-distance">{formatKm(place.nearest.km)}</p>
         <p className="stat-neighbor">to {place.nearest.name}</p>

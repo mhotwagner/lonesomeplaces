@@ -35,7 +35,7 @@ export default function App() {
     })
   }, [])
 
-  const takeMeSomewhereLonely = useCallback(() => {
+  const takeMeSomewhereLonesome = useCallback(() => {
     const pool = visiblePlaces.filter((p) => p.id !== selectedId)
     if (pool.length === 0) return
     setSelectedId(pool[Math.floor(Math.random() * pool.length)].id)
@@ -56,8 +56,8 @@ export default function App() {
     else url.searchParams.delete('place')
     window.history.replaceState(null, '', url)
     document.title = selected
-      ? `${selected.name} — Lonely Places`
-      : 'Lonely Places — an atlas of the ends of the earth'
+      ? `${selected.name} — Lonesome Places`
+      : 'Lonesome Places — an atlas of the ends of the earth'
   }, [selectedId, selected])
 
   return (
@@ -65,14 +65,14 @@ export default function App() {
       <GlobeMap activeCategories={activeCategories} selected={selected} onSelect={setSelectedId} />
 
       <header className="wordmark">
-        <h1>Lonely Places</h1>
+        <h1>Lonesome Places</h1>
         <p>An atlas of the ends of the earth</p>
       </header>
 
       <Legend active={activeCategories} onToggle={toggleCategory} />
 
-      <button className="lonely-button" onClick={takeMeSomewhereLonely}>
-        Take me somewhere lonely
+      <button className="lonesome-button" onClick={takeMeSomewhereLonesome}>
+        Take me somewhere lonesome
       </button>
 
       {selected && <Dossier place={selected} onClose={() => setSelectedId(null)} />}

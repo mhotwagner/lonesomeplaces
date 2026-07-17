@@ -3,7 +3,7 @@ import maplibregl from 'maplibre-gl'
 import type { StyleSpecification } from 'maplibre-gl'
 import type { FeatureCollection } from 'geojson'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { CATEGORIES, PLACES, type Category, type LonelyPlace } from '../data/places'
+import { CATEGORIES, PLACES, type Category, type LonesomePlace } from '../data/places'
 import { formatDMS, greatCircleArc } from '../lib/geo'
 
 const MOBILE_QUERY = '(max-width: 720px)'
@@ -53,7 +53,7 @@ const mapStyle: StyleSpecification = {
         '<a href="https://s2maps.eu" target="_blank" rel="noreferrer">Sentinel-2 cloudless</a> by EOX (Copernicus data 2020)',
     },
     places: { type: 'geojson', data: placesGeoJSON, promoteId: 'id' },
-    'lonely-line': { type: 'geojson', data: EMPTY },
+    'lonesome-line': { type: 'geojson', data: EMPTY },
   },
   sky: {
     'sky-color': '#0B1526',
@@ -64,9 +64,9 @@ const mapStyle: StyleSpecification = {
   layers: [
     { id: 'satellite', type: 'raster', source: 'satellite' },
     {
-      id: 'lonely-line-path',
+      id: 'lonesome-line-path',
       type: 'line',
-      source: 'lonely-line',
+      source: 'lonesome-line',
       filter: ['==', ['geometry-type'], 'LineString'],
       paint: {
         'line-color': '#F2EFE4',
@@ -76,9 +76,9 @@ const mapStyle: StyleSpecification = {
       },
     },
     {
-      id: 'lonely-line-end',
+      id: 'lonesome-line-end',
       type: 'circle',
-      source: 'lonely-line',
+      source: 'lonesome-line',
       filter: ['==', ['geometry-type'], 'Point'],
       paint: {
         'circle-radius': 3,
@@ -131,7 +131,7 @@ const DASH_SEQUENCE: number[][] = [
 
 interface GlobeMapProps {
   activeCategories: Category[]
-  selected: LonelyPlace | null
+  selected: LonesomePlace | null
   onSelect: (id: string | null) => void
 }
 
@@ -144,7 +144,7 @@ export function GlobeMap({ activeCategories, selected, onSelect }: GlobeMapProps
 
   const onSelectRef = useRef(onSelect)
   onSelectRef.current = onSelect
-  const selectedRef = useRef<LonelyPlace | null>(selected)
+  const selectedRef = useRef<LonesomePlace | null>(selected)
   selectedRef.current = selected
   const hoverIdRef = useRef<string | null>(null)
 
@@ -258,7 +258,7 @@ export function GlobeMap({ activeCategories, selected, onSelect }: GlobeMapProps
     const map = mapRef.current
     if (!map || !ready) return
     const reducedMotion = window.matchMedia(REDUCED_MOTION).matches
-    const source = map.getSource('lonely-line') as maplibregl.GeoJSONSource
+    const source = map.getSource('lonesome-line') as maplibregl.GeoJSONSource
 
     if (!selected) {
       source.setData(EMPTY)
@@ -301,8 +301,8 @@ export function GlobeMap({ activeCategories, selected, onSelect }: GlobeMapProps
         if (t - lastTick > 70) {
           lastTick = t
           step = (step + 1) % DASH_SEQUENCE.length
-          if (map.getLayer('lonely-line-path')) {
-            map.setPaintProperty('lonely-line-path', 'line-dasharray', DASH_SEQUENCE[step])
+          if (map.getLayer('lonesome-line-path')) {
+            map.setPaintProperty('lonesome-line-path', 'line-dasharray', DASH_SEQUENCE[step])
           }
         }
         raf = requestAnimationFrame(animate)

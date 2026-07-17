@@ -1,4 +1,4 @@
-# Lonely Places
+# Lonesome Places
 
 *An atlas of the ends of the earth.*
 
@@ -10,7 +10,7 @@ Click a beacon and a dossier slides in: an evocative field note, live Wikipedia
 summary and imagery, how you'd actually get there, and the hero stat of every
 entry — the distance to the nearest inhabited place, drawn on the globe as an
 animated great-circle line to that neighbor. Or press **"Take me somewhere
-lonely"** and let the atlas choose.
+lonesome"** and let the atlas choose.
 
 ## Running it
 
