@@ -7,7 +7,7 @@
  * authoritative version.
  */
 
-export type Category = 'outpost' | 'station' | 'uninhabited' | 'ghost' | 'pole'
+export type Category = 'outpost' | 'station' | 'uninhabited' | 'ghost' | 'apart' | 'pole'
 
 export interface Nearest {
   name: string
@@ -41,6 +41,7 @@ export const CATEGORIES: Record<Category, { label: string; color: string }> = {
   station: { label: 'Stations & bases', color: '#63C7B8' },
   uninhabited: { label: 'Uninhabited', color: '#9FB8D0' },
   ghost: { label: 'Abandoned', color: '#C97B5A' },
+  apart: { label: 'Set apart', color: '#B39DDB' },
   pole: { label: 'Poles of inaccessibility', color: '#F2EFE4' },
 }
 
@@ -179,36 +180,6 @@ export const PLACES: LonesomePlace[] = [
     wikipedia: 'Oymyakon',
     blurb:
       'In 1933 the thermometer here read −67.7 °C, the coldest ever recorded in a permanently inhabited place. School is cancelled only below −52 °C; the ground is permanently frozen, so the dead are buried with bonfires that thaw the earth one metre at a time.',
-  },
-  {
-    id: 'supai',
-    name: 'Supai, Arizona',
-    tagline: 'The last town in America where the mail comes by mule',
-    category: 'outpost',
-    territory: 'Havasupai Reservation, United States',
-    coords: [-112.696, 36.238],
-    population: '≈200',
-    nearest: { name: 'Peach Springs, Arizona', km: 100, coords: [-113.425, 35.529] },
-    gettingThere:
-      'An hour down a dead-end road, then thirteen kilometres on foot, by mule, or by helicopter into a side gorge of the Grand Canyon.',
-    wikipedia: 'Supai, Arizona',
-    blurb:
-      'The Havasupai — “people of the blue-green water” — have lived beside these travertine waterfalls for centuries, at the bottom of a canyon no road has ever reached. It is routinely called the most remote community in the contiguous United States, and its mule-train mail route is the last one left.',
-  },
-  {
-    id: 'la-rinconada',
-    name: 'La Rinconada',
-    tagline: 'The highest human settlement on Earth, built on gold and ice',
-    category: 'outpost',
-    territory: 'Puno, Peru',
-    coords: [-69.446, -14.631],
-    population: '≈30,000–50,000',
-    nearest: { name: 'Juliaca, Peru', km: 120, coords: [-70.135, -15.5] },
-    gettingThere:
-      'A climbing dirt road from Juliaca that ends at 5,100 metres, where the glacier begins. There is no running water and no sewer. There is gold.',
-    wikipedia: 'La Rinconada, Peru',
-    blurb:
-      'Lonely not by distance but by altitude: no permanent settlement on Earth sits higher. Tens of thousands live beside a shrinking glacier, many mining under the cachorreo system — thirty days unpaid, then one day to keep whatever ore they can carry.',
   },
   {
     id: 'villa-las-estrellas',
@@ -364,21 +335,6 @@ export const PLACES: LonesomePlace[] = [
     wikipedia: 'Rapa Iti',
     blurb:
       'The southernmost inhabited island of French Polynesia, too cool for coconut palms, its ridgeline crowned with ancient fortified villages. Five hundred people, a drowned volcanic caldera for a harbour, and a boat that comes when it comes.',
-  },
-  {
-    id: 'north-sentinel',
-    name: 'North Sentinel Island',
-    tagline: 'The most isolated society on Earth — by their own choice',
-    category: 'outpost',
-    territory: 'Andaman Islands · India (autonomous in practice)',
-    coords: [92.235, 11.557],
-    population: 'Unknown · est. 50–200',
-    nearest: { name: 'Port Blair, Andaman Islands', km: 50, coords: [92.75, 11.62] },
-    gettingThere:
-      'You don’t. The Sentinelese have refused contact for centuries, and Indian law enforces an exclusion zone around the island — a boundary that exists to protect them.',
-    wikipedia: 'North Sentinel Island',
-    blurb:
-      'Perhaps the only place in this atlas that is lonely only from the outside: the Sentinelese have made it emphatically clear, for as long as anyone has records, that they want no visitors. By every account they are not castaways but a community — one that has chosen, consistently, to be left alone. This atlas marks them from a respectful distance.',
   },
 
   // ————————————————————————————————— STATIONS & BASES
@@ -808,6 +764,51 @@ export const PLACES: LonesomePlace[] = [
     blurb:
       'Dwarf woolly mammoths survived on this island until roughly 4,000 years ago — the Great Pyramid was already standing while they grazed here. Today it hosts the world’s highest density of polar bear dens, patrolled by a handful of humans at most.',
   },
+  {
+    id: 'kaffeklubben',
+    name: 'Kaffeklubben Island',
+    tagline: 'The northernmost solid ground on Earth, named for a coffee club',
+    category: 'uninhabited',
+    territory: 'Peary Land · Greenland',
+    coords: [-29.83, 83.666],
+    population: '0',
+    nearest: { name: 'Station Nord, Greenland', km: 300, coords: [-16.65, 81.6], label: 'Nearest occupied post' },
+    gettingThere:
+      'A chartered ski-plane from Station Nord when weather, ice, and money align; only a handful of expeditions have ever stood on it.',
+    wikipedia: 'Kaffeklubben Island',
+    blurb:
+      'Danish geologist Lauge Koch named this gravel sliver in 1921 after the coffee club of Copenhagen’s Mineralogical Museum. It holds the modest, magnificent title of northernmost undisputed land on Earth — gravel banks occasionally surface in the ice beyond, but they shift and vanish, and Kaffeklubben’s Arctic poppies do not. Beyond it there is only frozen ocean, and then the Pole, 700 kilometres on.',
+  },
+  {
+    id: 'devon-island',
+    name: 'Devon Island',
+    tagline: 'The largest uninhabited island on Earth, where NASA rehearses Mars',
+    category: 'uninhabited',
+    territory: 'Nunavut · Canada',
+    coords: [-87.0, 75.1],
+    population: '0 (a Mars-analog crew in high summer)',
+    nearest: { name: 'Resolute, Cornwallis Island', km: 230, coords: [-94.83, 74.697] },
+    gettingThere:
+      'Charter flights from Resolute serve the summer research camp at Haughton crater; the rest of the year the island belongs to the muskoxen.',
+    wikipedia: 'Devon Island',
+    blurb:
+      'A polar desert the size of a small country with a permanent population of zero: the Haughton impact crater is so cold, dry, and rocky that NASA and the Mars Society have spent decades testing rovers, suits, and crews there. At Dundas Harbour, two Mounted Police graves from the 1920s mark one of the loneliest postings in Canadian history — this island defeated even its police station.',
+  },
+  {
+    id: 'st-matthew-island',
+    name: 'St. Matthew Island',
+    tagline: 'Alaska’s farthest island, where 6,000 reindeer became 42',
+    category: 'uninhabited',
+    territory: 'Bering Sea · Alaska, United States',
+    coords: [-172.72, 60.4],
+    population: '0',
+    nearest: { name: 'Mekoryuk, Nunivak Island', km: 360, coords: [-166.19, 60.39] },
+    gettingThere:
+      'No flights, no harbor, no schedule — a day and more by research vessel from the Bering Sea coast, managed a few times a decade.',
+    wikipedia: 'St. Matthew Island',
+    blurb:
+      'In 1944 the Coast Guard released 29 reindeer here as an emergency larder, then closed its station and sailed away. With no predators the herd hit 6,000 by 1963; after one brutal winter, 42 remained — a collapse ecology students have been assigned ever since. The island keeps its own company now: McKay’s bunting breeds here and almost nowhere else on Earth.',
+  },
 
   // ————————————————————————————————— ABANDONED
   {
@@ -868,6 +869,245 @@ export const PLACES: LonesomePlace[] = [
     wikipedia: 'Pyramiden',
     blurb:
       'A model Soviet mining settlement — swimming pool, grand piano, heroic mosaics — abandoned almost overnight in 1998. The Arctic climate is preserving it on a timescale of centuries, under the gaze of the world’s northernmost Lenin.',
+  },
+  {
+    id: 'fordlandia',
+    name: 'Fordlândia',
+    tagline: 'Henry Ford’s Michigan-in-the-Amazon, reclaimed by the jungle',
+    category: 'ghost',
+    territory: 'Pará · Brazil',
+    coords: [-55.494, -3.826],
+    population: '≈2,000 among the ruins',
+    nearest: { name: 'Aveiro, Pará', km: 30, coords: [-55.317, -3.606] },
+    gettingThere:
+      'A slow boat up the Tapajós from Santarém — the better part of a day on the river. There is no road worth the name.',
+    wikipedia: 'Fordlândia',
+    blurb:
+      'In 1928 Henry Ford built a Midwestern town in the Amazon — clapboard houses, fire hydrants, a water tower, mandatory square dancing — to grow rubber for his tires. The trees died of leaf blight, the workers rioted over cafeteria rules, and Ford sold it all back to Brazil in 1945 without ever once visiting. The water tower still stands over the town Detroit forgot, and a few thousand Brazilians live quietly in its bones.',
+    flyZoom: 8.5,
+  },
+  {
+    id: 'kolmanskop',
+    name: 'Kolmanskop',
+    tagline: 'Diamond mansions filling with the Namib, one room at a time',
+    category: 'ghost',
+    territory: 'ǁKaras Region · Namibia',
+    coords: [15.231, -26.704],
+    population: '0 — guides commute from Lüderitz',
+    nearest: { name: 'Lüderitz, Namibia', km: 10, coords: [15.159, -26.648] },
+    gettingThere:
+      'Ten minutes off the B4 from Lüderitz, with a permit for the diamond exclusion zone the town still technically sits inside.',
+    wikipedia: 'Kolmanskop',
+    blurb:
+      'When diamonds could be plucked from this sand by moonlight, Kolmanskop had a ballroom, a casino, an ice factory, and an X-ray machine bought to look through miners rather than patients. The diamonds moved south and the people followed in the 1950s; the desert moved in behind them. Today the doors stand open to dunes that rise knee-deep in the parlors.',
+    flyZoom: 10,
+  },
+  {
+    id: 'humberstone',
+    name: 'Humberstone',
+    tagline: 'A nitrate empire undone by a chemistry breakthrough an ocean away',
+    category: 'ghost',
+    territory: 'Tarapacá · Chile',
+    coords: [-69.794, -20.206],
+    population: '0',
+    nearest: { name: 'Pozo Almonte, Chile', km: 6, coords: [-69.786, -20.26] },
+    gettingThere:
+      'An easy detour off the Pan-American Highway, forty-five minutes inland from Iquique — the rare ghost town with a bus stop.',
+    wikipedia: 'Humberstone and Santa Laura Saltpeter Works',
+    blurb:
+      'Chilean saltpeter fed the world’s fields and filled its munitions until German chemists learned to pull nitrogen from the air itself, and towns like this one stopped making sense. The pampinos left a theater with its seats still facing the stage and a swimming pool made from a ship’s iron hull. UNESCO now guards what the Atacama’s dryness had already preserved.',
+    flyZoom: 10,
+  },
+
+  // ————————————————————————————————— SET APART — isolated by something other than distance
+  {
+    id: 'la-rinconada',
+    name: 'La Rinconada',
+    tagline: 'The highest human settlement on Earth, built on gold and ice',
+    category: 'apart',
+    territory: 'Puno, Peru',
+    coords: [-69.446, -14.631],
+    population: '≈30,000–50,000',
+    nearest: { name: 'Juliaca, Peru', km: 120, coords: [-70.135, -15.5] },
+    gettingThere:
+      'A climbing dirt road from Juliaca that ends at 5,100 metres, where the glacier begins. There is no running water and no sewer. There is gold.',
+    wikipedia: 'La Rinconada, Peru',
+    blurb:
+      'Lonely not by distance but by altitude: no permanent settlement on Earth sits higher. Tens of thousands live beside a shrinking glacier, many mining under the cachorreo system — thirty days unpaid, then one day to keep whatever ore they can carry.',
+  },
+  {
+    id: 'supai',
+    name: 'Supai, Arizona',
+    tagline: 'The last town in America where the mail comes by mule',
+    category: 'apart',
+    territory: 'Havasupai Reservation, United States',
+    coords: [-112.696, 36.238],
+    population: '≈200',
+    nearest: { name: 'Peach Springs, Arizona', km: 100, coords: [-113.425, 35.529] },
+    gettingThere:
+      'An hour down a dead-end road, then thirteen kilometres on foot, by mule, or by helicopter into a side gorge of the Grand Canyon.',
+    wikipedia: 'Supai, Arizona',
+    blurb:
+      'The Havasupai — “people of the blue-green water” — have lived beside these travertine waterfalls for centuries, at the bottom of a canyon no road has ever reached. It is routinely called the most remote community in the contiguous United States, and its mule-train mail route is the last one left.',
+  },
+  {
+    id: 'north-sentinel',
+    name: 'North Sentinel Island',
+    tagline: 'The most isolated society on Earth — by their own choice',
+    category: 'apart',
+    territory: 'Andaman Islands · India (autonomous in practice)',
+    coords: [92.235, 11.557],
+    population: 'Unknown · est. 50–200',
+    nearest: { name: 'Port Blair, Andaman Islands', km: 50, coords: [92.75, 11.62] },
+    gettingThere:
+      'You don’t. The Sentinelese have refused contact for centuries, and Indian law enforces an exclusion zone around the island — a boundary that exists to protect them.',
+    wikipedia: 'North Sentinel Island',
+    blurb:
+      'Perhaps the only place in this atlas that is lonely only from the outside: the Sentinelese have made it emphatically clear, for as long as anyone has records, that they want no visitors. By every account they are not castaways but a community — one that has chosen, consistently, to be left alone. This atlas marks them from a respectful distance.',
+  },
+  {
+    id: 'monowi',
+    name: 'Monowi, Nebraska',
+    tagline: 'Population: one — and she is the mayor',
+    category: 'apart',
+    territory: 'Nebraska · United States',
+    coords: [-98.33, 42.829],
+    population: '1',
+    nearest: { name: 'Lynch, Nebraska', km: 11, coords: [-98.464, 42.831] },
+    gettingThere:
+      'Nebraska Highway 12 runs right past, and the tavern keeps regular hours six days a week. Getting here is easy; staying is what nobody else chose.',
+    wikipedia: 'Monowi, Nebraska',
+    blurb:
+      'Elsie Eiler is Monowi’s mayor, clerk, treasurer, tavern keeper, and entire electorate: each year she re-elects herself, renews her own liquor license, and collects taxes from herself. The village peaked near 150 in the 1930s before the Plains emptied out. Next to the bar stands the library her late husband Rudy left behind — five thousand books — where the loneliness of the Great Plains has a card catalog.',
+    flyZoom: 9,
+  },
+  {
+    id: 'whittier',
+    name: 'Whittier, Alaska',
+    tagline: 'A town that lives in one building, behind a tunnel that closes at night',
+    category: 'apart',
+    territory: 'Alaska · United States',
+    coords: [-148.684, 60.773],
+    population: '≈270, nearly all under one roof',
+    nearest: { name: 'Girdwood, Alaska', km: 30, coords: [-149.166, 60.943] },
+    gettingThere:
+      'The only road in shares a single one-lane tunnel with a freight railroad — traffic alternates by timetable, and the tunnel shuts for the night around half past ten. Miss it, and Whittier keeps you.',
+    wikipedia: 'Whittier, Alaska',
+    blurb:
+      'The Army built Whittier as a secret Cold War port, behind weather so reliably terrible it doubled as camouflage. Nearly everyone now lives in Begich Towers, a fourteen-story barracks turned vertical village — city hall, clinic, church, and grocery under one roof, with a tunnel to the school so the children never face the wind. Anchorage is an hour away; it rarely feels like it.',
+    flyZoom: 9,
+  },
+  {
+    id: 'point-roberts',
+    name: 'Point Roberts, Washington',
+    tagline: 'An American town you can only drive to through Canada',
+    category: 'apart',
+    territory: 'Washington · United States',
+    coords: [-123.06, 48.985],
+    population: '≈1,200',
+    nearest: { name: 'Tsawwassen, British Columbia', km: 4, coords: [-123.087, 49.015], label: 'Across the line' },
+    gettingThere:
+      'From the rest of America: forty minutes and two international border crossings. The alternative is a boat across Boundary Bay.',
+    wikipedia: 'Point Roberts, Washington',
+    blurb:
+      'In 1846 diplomats drew the 49th parallel across a map of the Pacific Northwest and sliced off the tip of a Canadian peninsula, stranding five square miles of the United States below the line. Schoolchildren past the third grade cross two borders each way to class; when the border closed in 2020, the town nearly emptied. Its isolation is entirely man-made — exactly one ruler-stroke thick.',
+    flyZoom: 9.5,
+  },
+  {
+    id: 'niihau',
+    name: 'Niʻihau',
+    tagline: 'The Forbidden Isle, closed to outsiders since 1915',
+    category: 'apart',
+    territory: 'Hawaii · United States',
+    coords: [-160.156, 21.895],
+    population: '≈80',
+    nearest: { name: 'Kekaha, Kauaʻi', km: 45, coords: [-159.717, 21.971] },
+    gettingThere:
+      'Unless invited by a resident or the Robinson family, you don’t — save for brief, chaperoned helicopter tours that keep well clear of the village.',
+    wikipedia: 'Niihau',
+    blurb:
+      'Elizabeth Sinclair bought Niʻihau from Kamehameha V in 1864 for ten thousand dollars, and her descendants have kept it closed to the world since 1915 — no hotels, no paved roads, no grid. The result confounds every expectation of what isolation costs: this is the last place on Earth where Hawaiian remains the language of everyday life. Distance was never the point; Kauaʻi glitters across the channel every night.',
+    flyZoom: 8,
+  },
+  {
+    id: 'surtsey',
+    name: 'Surtsey',
+    tagline: 'Born in 1963, sealed off ever since — pristine by decree',
+    category: 'apart',
+    territory: 'Vestmannaeyjar · Iceland',
+    coords: [-20.605, 63.303],
+    population: '0 — visiting scientists only',
+    nearest: { name: 'Heimaey, Vestmannaeyjar', km: 20, coords: [-20.273, 63.442] },
+    gettingThere:
+      'Only research teams may land, a few days each summer; everyone else circles by boat or flies over.',
+    wikipedia: 'Surtsey',
+    blurb:
+      'In November 1963 the sea south of Iceland began to boil, and when the eruption ended there was a new island, named for Surtr, the fire giant of Norse myth. Iceland declared it off-limits from birth so that science could watch life colonize bare rock in real time — every seed, gull, and seal logged since. When a tomato plant sprouted from an improperly buried human contribution, it was solemnly uprooted. This quarantine protects the island from us.',
+    flyZoom: 8.5,
+  },
+  {
+    id: 'north-brother-island',
+    name: 'North Brother Island',
+    tagline: 'Typhoid Mary’s quarantine island, in sight of the Manhattan skyline',
+    category: 'apart',
+    territory: 'East River · New York City, United States',
+    coords: [-73.899, 40.801],
+    population: '0 — herons and ruins',
+    nearest: { name: 'Port Morris, the Bronx', km: 1, coords: [-73.906, 40.797] },
+    gettingThere:
+      'You can see it from the Bronx waterfront and from every LaGuardia takeoff, but landing requires a rarely granted city permit — the island is a protected bird sanctuary.',
+    wikipedia: 'North and South Brother Islands (New York City)',
+    blurb:
+      'New York quarantined its contagious at Riverside Hospital here — most famously Mary Mallon, Typhoid Mary, who spent more than two decades confined to the island and died on it in 1938. In 1904 the burning steamship General Slocum ran aground on its shore with the loss of over a thousand lives. Abandoned since 1963, it molders eight hundred metres from a city of eight million.',
+    flyZoom: 11,
+  },
+  {
+    id: 'poveglia',
+    name: 'Poveglia',
+    tagline: 'Venice’s plague island, still holding its quarantine',
+    category: 'apart',
+    territory: 'Venetian Lagoon · Italy',
+    coords: [12.331, 45.381],
+    population: '0',
+    nearest: { name: 'Malamocco, Lido di Venezia', km: 2, coords: [12.348, 45.365] },
+    gettingThere:
+      'No vaporetto stops here, and entry is barred without a permit few receive; the bell tower is best admired from a hired boat idling offshore.',
+    wikipedia: 'Poveglia',
+    blurb:
+      'For centuries Venice sent its plague dead and dying across the water to Poveglia’s lazaretto — by some estimates tens of thousands lie in its soil. A mental asylum used the same buildings until 1968, and then the island simply closed. The octagonal fort still guards a channel whose only traffic now is herons, and the campanile rises out of the ivy like the mast of something sunk.',
+    flyZoom: 11,
+  },
+  {
+    id: 'plymouth-montserrat',
+    name: 'Plymouth, Montserrat',
+    tagline: 'The only capital city on Earth with a population of zero',
+    category: 'apart',
+    territory: 'Montserrat · British Overseas Territory',
+    coords: [-62.217, 16.706],
+    population: '0 — capital de jure',
+    nearest: { name: 'Brades, Montserrat', km: 9, coords: [-62.211, 16.79] },
+    gettingThere:
+      'The southern two-thirds of Montserrat is an exclusion zone; licensed guides lead visitors to overlooks where the ash-filled streets are readable below.',
+    wikipedia: 'Plymouth, Montserrat',
+    blurb:
+      'When the Soufrière Hills volcano woke in 1995 after centuries of silence, Plymouth was evacuated, then buried — pyroclastic flows filled its streets to the rooflines, and nineteen people who stayed to farm were killed. No act of government ever moved the capital, so a smothered city remains Montserrat’s seat in law. Two-thirds of the islanders left for good; the rest live in sight of the mountain that took the town.',
+    flyZoom: 10,
+  },
+  {
+    id: 'villa-epecuen',
+    name: 'Villa Epecuén',
+    tagline: 'The resort town that drowned in salt water and rose again',
+    category: 'apart',
+    territory: 'Buenos Aires Province · Argentina',
+    coords: [-62.808, -37.134],
+    population: '0 — for years, exactly one',
+    nearest: { name: 'Carhué, Buenos Aires Province', km: 6, coords: [-62.766, -37.178] },
+    gettingThere:
+      'An easy drive from Carhué, whose own lakeside promenade looks across the water at the ruins. The dead trees mark the old shoreline.',
+    wikipedia: 'Villa Epecuén',
+    blurb:
+      'Epecuén’s hypersaline lake — saltier, the brochures said, than the Dead Sea — drew tens of thousands of bathers a season until November 1985, when a levee failed after years of rain and the lake calmly took the town, ten metres deep. A quarter-century later the water withdrew and handed back a salt-bleached Pompeii. For years its only resident was Pablo Novak, who moved back alone into the ruins, and preferred it.',
+    flyZoom: 10,
   },
 
   // ————————————————————————————————— POLES OF INACCESSIBILITY

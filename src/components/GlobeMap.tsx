@@ -33,6 +33,7 @@ const categoryColor: maplibregl.ExpressionSpecification = [
   'station', CATEGORIES.station.color,
   'uninhabited', CATEGORIES.uninhabited.color,
   'ghost', CATEGORIES.ghost.color,
+  'apart', CATEGORIES.apart.color,
   CATEGORIES.pole.color,
 ]
 

@@ -5,7 +5,7 @@ const COUNTS = PLACES.reduce(
     acc[p.category] += 1
     return acc
   },
-  { outpost: 0, station: 0, uninhabited: 0, ghost: 0, pole: 0 } as Record<Category, number>,
+  { outpost: 0, station: 0, uninhabited: 0, ghost: 0, apart: 0, pole: 0 } as Record<Category, number>,
 )
 
 interface LegendProps {
